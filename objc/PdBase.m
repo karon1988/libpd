@@ -325,9 +325,7 @@ static NSTimer *midiPollTimer;
 }
 
 + (void)addToSearchPath:(NSString *)path {
-	@synchronized(self) {
 		libpd_add_to_search_path([path cStringUsingEncoding:NSASCIIStringEncoding]);
-	}
 }
 
 + (int)getBlockSize {
