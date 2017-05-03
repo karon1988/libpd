@@ -73,7 +73,7 @@ public final class PdBase {
       }
     } catch (Exception e) {
       // Now we know we aren't running on an Android device.
-      NativeLoader.loadLibrary("pthreadGC2", "windows");
+      NativeLoader.loadLibrary("libwinpthread-1", "windows");
       NativeLoader.loadLibrary("pdnative");
     }
     initialize();
