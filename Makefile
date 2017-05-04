@@ -175,7 +175,7 @@ $(LIBPD): ${PD_FILES:.c=.o} ${UTIL_FILES:.c=.o} ${EXTRA_FILES:.c=.o}
 javalib: $(JNIH_FILE) $(PDJAVA_JAR)
 
 $(JNIH_FILE): $(JAVA_BASE)
-	javac -classpath java $^
+	javac -source 5 -target 5 -classpath java $^
 	javah -o $@ -classpath java org.puredata.core.PdBase
 
 $(PDJAVA_NATIVE): ${PD_FILES:.c=.o} ${LIBPD_UTILS:.c=.o} ${EXTRA_FILES:.c=.o} ${JNI_FILE:.c=.o}
@@ -184,7 +184,7 @@ $(PDJAVA_NATIVE): ${PD_FILES:.c=.o} ${LIBPD_UTILS:.c=.o} ${EXTRA_FILES:.c=.o} ${
 	cp $(PDJAVA_NATIVE) libs/
 
 $(PDJAVA_JAR): $(PDJAVA_NATIVE) $(PDJAVA_JAR_CLASSES)
-	javac -d $(PDJAVA_BUILD) $(PDJAVA_JAR_CLASSES)
+	javac -source 5 -target 5 -d $(PDJAVA_BUILD) $(PDJAVA_JAR_CLASSES)
 	jar -cvf $(PDJAVA_JAR) -C $(PDJAVA_BUILD) org/puredata/
 
 csharplib: $(PDCSHARP)
